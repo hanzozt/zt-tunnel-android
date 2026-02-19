@@ -2,7 +2,7 @@
  * Copyright (c) 2025 NetFoundry. All rights reserved.
  */
 
-package org.openziti.mobile
+package org.hanzozt.mobile
 
 import android.app.Activity
 import android.content.Intent
@@ -59,7 +59,7 @@ import com.journeyapps.barcodescanner.ScanOptions
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import org.openziti.mobile.databinding.ActivityZitiEnrollmentBinding
+import org.hanzozt.mobile.databinding.ActivityZitiEnrollmentBinding
 import timber.log.Timber
 import java.net.URL
 

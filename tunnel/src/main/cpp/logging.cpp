@@ -97,7 +97,7 @@ static void createLogFile() {
 
 extern "C"
 JNIEXPORT void JNICALL
-Java_org_openziti_log_NativeLog_setLogLevel(JNIEnv *env, jclass clazz, jint level) {
+Java_org_hanzozt_log_NativeLog_setLogLevel(JNIEnv *env, jclass clazz, jint level) {
 }
 
 static void log_finish() {
@@ -108,7 +108,7 @@ static void log_finish() {
 
 extern "C"
 JNIEXPORT void JNICALL
-Java_org_openziti_log_NativeLog_setupLogging0(JNIEnv *env, jclass thiz, jstring dir) {
+Java_org_hanzozt_log_NativeLog_setupLogging0(JNIEnv *env, jclass thiz, jstring dir) {
     const char *dir_str = env->GetStringUTFChars(dir, nullptr);
     snprintf(log_dir, sizeof(log_dir), "%s", dir_str);
     env->ReleaseStringUTFChars(dir, dir_str);
@@ -119,7 +119,7 @@ Java_org_openziti_log_NativeLog_setupLogging0(JNIEnv *env, jclass thiz, jstring 
 
 extern "C"
 JNIEXPORT void JNICALL
-Java_org_openziti_log_NativeLog_logNative(JNIEnv *env, jclass clazz,
+Java_org_hanzozt_log_NativeLog_logNative(JNIEnv *env, jclass clazz,
                                           jint priority, jstring tag, jstring msg) {
     if (logfile != nullptr) {
         switch ((android_LogPriority) priority) {
@@ -163,12 +163,12 @@ Java_org_openziti_log_NativeLog_logNative(JNIEnv *env, jclass clazz,
 
 extern "C"
 JNIEXPORT void JNICALL
-Java_org_openziti_log_NativeLog_startNewFile(JNIEnv *env, jclass clazz) {
+Java_org_hanzozt_log_NativeLog_startNewFile(JNIEnv *env, jclass clazz) {
     createLogFile();
 }
 extern "C"
 JNIEXPORT void JNICALL
-Java_org_openziti_log_NativeLog_flush(JNIEnv *env, jclass clazz) {
+Java_org_hanzozt_log_NativeLog_flush(JNIEnv *env, jclass clazz) {
     if (logfile) {
         fflush(logfile);
     }

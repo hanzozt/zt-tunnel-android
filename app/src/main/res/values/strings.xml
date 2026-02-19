@@ -57,7 +57,7 @@
 
     <!-- Remove the following once Reskinned -->
     <string name="app_name">Ziti Mobile Edge</string>
-    <string name="supportEmailSubject">OpenZiti Support(Android)</string>
+    <string name="supportEmailSubject">Hanzo ZT Support(Android)</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="main_title">Tap To Connect</string>

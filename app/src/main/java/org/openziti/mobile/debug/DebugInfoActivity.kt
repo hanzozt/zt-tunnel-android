@@ -2,13 +2,13 @@
  * Copyright (c) 2021 NetFoundry. All rights reserved.
  */
 
-package org.openziti.mobile.debug
+package org.hanzozt.mobile.debug
 
 import android.os.Bundle
 import androidx.fragment.app.FragmentActivity
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import org.openziti.mobile.databinding.ActivityDebugInfoBinding
+import org.hanzozt.mobile.databinding.ActivityDebugInfoBinding
 
 class DebugInfoActivity : FragmentActivity() {
 

@@ -2,7 +2,7 @@
  * Copyright (c) 2025 NetFoundry. All rights reserved.
  */
 
-package org.openziti.mobile.debug
+package org.hanzozt.mobile.debug
 
 import android.app.ActivityManager
 import android.content.Context
@@ -10,11 +10,11 @@ import android.content.Intent
 import android.os.Build
 import android.os.Debug
 import androidx.core.content.FileProvider
-import org.openziti.log.NativeLog
-import org.openziti.mobile.R
-import org.openziti.mobile.ZitiMobileEdgeApp
-import org.openziti.tunnel.Keychain
-import org.openziti.tunnel.Tunnel
+import org.hanzozt.log.NativeLog
+import org.hanzozt.mobile.R
+import org.hanzozt.mobile.ZitiMobileEdgeApp
+import org.hanzozt.tunnel.Keychain
+import org.hanzozt.tunnel.Tunnel
 import java.io.PrintWriter
 import java.io.StringWriter
 import java.io.Writer
@@ -185,7 +185,7 @@ sealed class DebugInfo(val wrap: Boolean = false) {
 
         fun feedbackIntent(app: ZitiMobileEdgeApp) = Intent(Intent.ACTION_SEND).apply {
             type = "application/zip"
-            putExtra(Intent.EXTRA_EMAIL, arrayOf("developers@openziti.org"))
+            putExtra(Intent.EXTRA_EMAIL, arrayOf("developers@hanzozt.org"))
             putExtra(Intent.EXTRA_SUBJECT, app.getString(R.string.supportEmailSubject))
 
             val identities = app.model.identities().value ?: emptyList()

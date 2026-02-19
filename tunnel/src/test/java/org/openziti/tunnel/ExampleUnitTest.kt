@@ -1,4 +1,4 @@
-package org.openziti.tunnel
+package org.hanzozt.tunnel
 
 import org.junit.Test
 

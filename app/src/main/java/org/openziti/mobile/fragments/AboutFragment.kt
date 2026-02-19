@@ -3,7 +3,7 @@
  */
 
 
-package org.openziti.mobile.fragments
+package org.hanzozt.mobile.fragments
 
 import android.content.ClipData
 import android.content.ClipboardManager
@@ -15,9 +15,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import org.openziti.mobile.BuildConfig
-import org.openziti.mobile.databinding.AboutBinding
-import org.openziti.tunnel.Tunnel
+import org.hanzozt.mobile.BuildConfig
+import org.hanzozt.mobile.databinding.AboutBinding
+import org.hanzozt.tunnel.Tunnel
 
 /**
  * A simple [Fragment] subclass.

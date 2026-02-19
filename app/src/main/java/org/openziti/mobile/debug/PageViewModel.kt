@@ -2,7 +2,7 @@
  * Copyright (c) 2021 NetFoundry. All rights reserved.
  */
 
-package org.openziti.mobile.debug
+package org.hanzozt.mobile.debug
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

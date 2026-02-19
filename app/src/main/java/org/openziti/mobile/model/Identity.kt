@@ -2,7 +2,7 @@
  * Copyright (c) 2025 NetFoundry. All rights reserved.
  */
 
-package org.openziti.mobile.model
+package org.hanzozt.mobile.model
 
 import android.content.Context
 import androidx.datastore.core.DataStore
@@ -21,17 +21,17 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.json.Json
-import org.openziti.tunnel.ConfigEvent
-import org.openziti.tunnel.ContextEvent
-import org.openziti.tunnel.Event
-import org.openziti.tunnel.ExtAuthResult
-import org.openziti.tunnel.ExtJWTEvent
-import org.openziti.tunnel.JwtSigner
-import org.openziti.tunnel.RouterEvent
-import org.openziti.tunnel.RouterStatus
-import org.openziti.tunnel.Service
-import org.openziti.tunnel.ServiceEvent
-import org.openziti.tunnel.ZitiConfig
+import org.hanzozt.tunnel.ConfigEvent
+import org.hanzozt.tunnel.ContextEvent
+import org.hanzozt.tunnel.Event
+import org.hanzozt.tunnel.ExtAuthResult
+import org.hanzozt.tunnel.ExtJWTEvent
+import org.hanzozt.tunnel.JwtSigner
+import org.hanzozt.tunnel.RouterEvent
+import org.hanzozt.tunnel.RouterStatus
+import org.hanzozt.tunnel.Service
+import org.hanzozt.tunnel.ServiceEvent
+import org.hanzozt.tunnel.ZitiConfig
 import java.net.URI
 import java.time.Clock.*
 import java.util.concurrent.CompletableFuture

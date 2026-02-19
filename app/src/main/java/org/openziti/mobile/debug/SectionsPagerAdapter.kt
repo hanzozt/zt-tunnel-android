@@ -2,7 +2,7 @@
  * Copyright (c) 2021 NetFoundry. All rights reserved.
  */
 
-package org.openziti.mobile.debug
+package org.hanzozt.mobile.debug
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity

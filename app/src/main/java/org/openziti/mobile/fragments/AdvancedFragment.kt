@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2024 NetFoundry. All rights reserved.
  */
-package org.openziti.mobile.fragments
+package org.hanzozt.mobile.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,8 +10,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
-import org.openziti.mobile.R
-import org.openziti.mobile.databinding.AdvancedBinding
+import org.hanzozt.mobile.R
+import org.hanzozt.mobile.databinding.AdvancedBinding
 
 /**
  * A simple [Fragment] subclass.

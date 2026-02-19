@@ -2,7 +2,7 @@
  * Copyright (c) 2021 NetFoundry. All rights reserved.
  */
 
-package org.openziti.mobile
+package org.hanzozt.mobile
 
 import android.app.Application
 import android.content.Intent

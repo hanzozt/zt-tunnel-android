@@ -2,7 +2,7 @@
  * Copyright (c) 2025 NetFoundry. All rights reserved.
  */
 
-package org.openziti.mobile
+package org.hanzozt.mobile
 
 import android.Manifest.permission.FOREGROUND_SERVICE_SYSTEM_EXEMPTED
 import android.app.Notification
@@ -32,8 +32,8 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
-import org.openziti.mobile.model.TunnelModel
-import org.openziti.tunnel.toRoute
+import org.hanzozt.mobile.model.TunnelModel
+import org.hanzozt.tunnel.toRoute
 import java.net.Inet4Address
 import java.net.Inet6Address
 import java.time.Duration
@@ -57,7 +57,7 @@ class ZitiVPNService : VpnService(), CoroutineScope {
     override val coroutineContext = SupervisorJob() + exec.asCoroutineDispatcher()
 
     lateinit var model: TunnelModel
-    lateinit var tun: org.openziti.tunnel.Tunnel
+    lateinit var tun: org.hanzozt.tunnel.Tunnel
     val tunnelState = MutableStateFlow("stop")
 
     private lateinit var connMgr: ConnectivityManager

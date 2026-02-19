@@ -2,7 +2,7 @@
  * Copyright (c) 2024 NetFoundry. All rights reserved.
  */
 
-package org.openziti.tunnel
+package org.hanzozt.tunnel
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

@@ -2,13 +2,13 @@
  * Copyright (c) 2025 NetFoundry. All rights reserved.
  */
 
-package org.openziti.mobile
+package org.hanzozt.mobile
 
 import android.app.Application
-import org.openziti.log.NativeLog
-import org.openziti.mobile.debug.DebugInfo
-import org.openziti.mobile.model.TunnelModel
-import org.openziti.tunnel.Tunnel
+import org.hanzozt.log.NativeLog
+import org.hanzozt.mobile.debug.DebugInfo
+import org.hanzozt.mobile.model.TunnelModel
+import org.hanzozt.tunnel.Tunnel
 import timber.log.Timber as Log
 
 /**

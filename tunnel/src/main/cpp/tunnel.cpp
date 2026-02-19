@@ -75,7 +75,7 @@ JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void* reserved) {
     }
 
     // Find your class. JNI_OnLoad is called from the correct class loader context for this to work.
-    jclass c = env->FindClass("org/openziti/tunnel/Tunnel");
+    jclass c = env->FindClass("org/hanzozt/tunnel/Tunnel");
     if (c == nullptr) return JNI_ERR;
 
     // Register your class' native methods.

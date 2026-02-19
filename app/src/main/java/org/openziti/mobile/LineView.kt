@@ -2,14 +2,14 @@
  * Copyright (c) 2020 NetFoundry. All rights reserved.
  */
 
-package org.openziti.mobile
+package org.hanzozt.mobile
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
 import android.view.LayoutInflater
 import android.widget.RelativeLayout
 import android.widget.Toast
-import org.openziti.mobile.databinding.LineBinding
+import org.hanzozt.mobile.databinding.LineBinding
 
 /**
  * Service List Line Items

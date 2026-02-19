@@ -1,14 +1,14 @@
 /*
  * Copyright (c) 2024 NetFoundry. All rights reserved.
  */
-package org.openziti.mobile.fragments
+package org.hanzozt.mobile.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import org.openziti.mobile.databinding.ConfigurationBinding
+import org.hanzozt.mobile.databinding.ConfigurationBinding
 
 /**
  * A simple [Fragment] subclass.

@@ -2,7 +2,7 @@
  * Copyright (c) 2025 NetFoundry. All rights reserved.
  */
 
-package org.openziti.tunnel
+package org.hanzozt.tunnel
 
 import android.app.Application
 import android.os.ParcelFileDescriptor
@@ -15,7 +15,7 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.onCompletion
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonElement
-import org.openziti.log.NativeLog
+import org.hanzozt.log.NativeLog
 import timber.log.Timber as Log
 import java.util.concurrent.CompletableFuture
 import java.util.concurrent.atomic.AtomicBoolean

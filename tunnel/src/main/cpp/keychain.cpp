@@ -61,7 +61,7 @@ static bool checkException(JNIEnv *env) {
 
 extern "C"
 JNIEXPORT void JNICALL
-Java_org_openziti_tunnel_Keychain_registerKeychain(JNIEnv *env, jclass clazz, jobject chain) {
+Java_org_hanzozt_tunnel_Keychain_registerKeychain(JNIEnv *env, jclass clazz, jobject chain) {
     android_keychain.store = env->NewGlobalRef(chain);
     tlsuv_set_keychain(&android_keychain.api);
     env->GetJavaVM(&android_keychain.vm);
@@ -224,7 +224,7 @@ void android_free_key(keychain_key_t k) {
 
 extern "C"
 JNIEXPORT jboolean JNICALL
-Java_org_openziti_tunnel_Keychain_testNativeKey(JNIEnv *env, jclass, jstring name) {
+Java_org_hanzozt_tunnel_Keychain_testNativeKey(JNIEnv *env, jclass, jstring name) {
     auto tls = default_tls_context(nullptr, 0);
     std::unique_ptr<tls_context, std::function<void(tls_context * )>> p(
             tls, [](tls_context *t) { t->free_ctx(t); }

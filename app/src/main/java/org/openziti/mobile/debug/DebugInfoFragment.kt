@@ -2,7 +2,7 @@
  * Copyright (c) 2021 NetFoundry. All rights reserved.
  */
 
-package org.openziti.mobile.debug
+package org.hanzozt.mobile.debug
 
 import android.graphics.text.LineBreaker
 import android.os.Build
@@ -14,7 +14,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import org.openziti.mobile.databinding.FragmentDebugInfoBinding
+import org.hanzozt.mobile.databinding.FragmentDebugInfoBinding
 
 /**
  * A placeholder fragment containing a simple view.

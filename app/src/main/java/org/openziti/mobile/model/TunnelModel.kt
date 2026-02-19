@@ -2,7 +2,7 @@
  * Copyright (c) 2025 NetFoundry. All rights reserved.
  */
 
-package org.openziti.mobile.model
+package org.hanzozt.mobile.model
 
 import android.content.Context
 import androidx.datastore.core.DataStore
@@ -28,22 +28,22 @@ import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive
 import kotlinx.serialization.json.decodeFromJsonElement
 import kotlinx.serialization.json.jsonPrimitive
-import org.openziti.tunnel.Dump
-import org.openziti.tunnel.Enroll
-import org.openziti.tunnel.Event
-import org.openziti.tunnel.ExtAuthResult
-import org.openziti.tunnel.ExternalAuth
-import org.openziti.tunnel.Keychain
-import org.openziti.tunnel.LoadIdentity
-import org.openziti.tunnel.OnOffCommand
-import org.openziti.tunnel.RefreshIdentity
-import org.openziti.tunnel.RemoveIdentity
-import org.openziti.tunnel.SetUpstreamDNS
-import org.openziti.tunnel.Tunnel
-import org.openziti.tunnel.Upstream
-import org.openziti.tunnel.ZitiConfig
-import org.openziti.tunnel.ZitiID
-import org.openziti.tunnel.toPEM
+import org.hanzozt.tunnel.Dump
+import org.hanzozt.tunnel.Enroll
+import org.hanzozt.tunnel.Event
+import org.hanzozt.tunnel.ExtAuthResult
+import org.hanzozt.tunnel.ExternalAuth
+import org.hanzozt.tunnel.Keychain
+import org.hanzozt.tunnel.LoadIdentity
+import org.hanzozt.tunnel.OnOffCommand
+import org.hanzozt.tunnel.RefreshIdentity
+import org.hanzozt.tunnel.RemoveIdentity
+import org.hanzozt.tunnel.SetUpstreamDNS
+import org.hanzozt.tunnel.Tunnel
+import org.hanzozt.tunnel.Upstream
+import org.hanzozt.tunnel.ZitiConfig
+import org.hanzozt.tunnel.ZitiID
+import org.hanzozt.tunnel.toPEM
 import java.io.File
 import timber.log.Timber as Log
 import java.net.URI

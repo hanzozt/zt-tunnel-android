@@ -58,12 +58,12 @@ if (whitelabel) {
     }
 }
 
-val wlAppId = wlProperties["id"]?.toString() ?: "org.openziti.mobile"
-val wlOrg = wlProperties["org"]?.toString() ?: "openziti"
+val wlAppId = wlProperties["id"]?.toString() ?: "org.hanzozt.mobile"
+val wlOrg = wlProperties["org"]?.toString() ?: "hanzozt"
 val wlResources = wlProperties["resourceDir"]?.toString()
 
 android {
-    namespace = "org.openziti.mobile"
+    namespace = "org.hanzozt.mobile"
     signingConfigs {
         create("release") {
             keyAlias = (System.getenv("RELEASE_KEY_ALIAS") ?: "ziti1")
@@ -77,7 +77,7 @@ android {
     ndkVersion = libs.versions.ndk.get()
 
     defaultConfig {
-        applicationId = "org.openziti.mobile"
+        applicationId = "org.hanzozt.mobile"
         minSdk = 28
         targetSdk = 36
         versionCode = getVersionCode()

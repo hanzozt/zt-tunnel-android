@@ -2,7 +2,7 @@
  * Copyright (c) 2025 NetFoundry. All rights reserved.
  */
 
-package org.openziti.log
+package org.hanzozt.log
 
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

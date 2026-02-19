@@ -42,7 +42,7 @@ when (sanitizer) {
 }
 
 android {
-    namespace = "org.openziti.tunnel"
+    namespace = "org.hanzozt.tunnel"
     compileSdk = 36
     ndkVersion = ndk
 

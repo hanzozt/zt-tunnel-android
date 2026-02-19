@@ -2,7 +2,7 @@
  * Copyright (c) 2025 NetFoundry. All rights reserved.
  */
 
-package org.openziti.mobile.fragments
+package org.hanzozt.mobile.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -34,15 +34,15 @@ import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
-import org.openziti.mobile.LineView
-import org.openziti.mobile.R
-import org.openziti.mobile.ZitiMobileEdgeApp
-import org.openziti.mobile.databinding.IdentityBinding
-import org.openziti.mobile.model.Identity
-import org.openziti.mobile.model.TunnelModel
-import org.openziti.tunnel.JwtSigner
-import org.openziti.tunnel.RouterEvent
-import org.openziti.tunnel.RouterStatus
+import org.hanzozt.mobile.LineView
+import org.hanzozt.mobile.R
+import org.hanzozt.mobile.ZitiMobileEdgeApp
+import org.hanzozt.mobile.databinding.IdentityBinding
+import org.hanzozt.mobile.model.Identity
+import org.hanzozt.mobile.model.TunnelModel
+import org.hanzozt.tunnel.JwtSigner
+import org.hanzozt.tunnel.RouterEvent
+import org.hanzozt.tunnel.RouterStatus
 import timber.log.Timber
 
 /**

@@ -2,7 +2,7 @@
  * Copyright (c) 2021 NetFoundry. All rights reserved.
  */
 
-package org.openziti.mobile
+package org.hanzozt.mobile
 import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.drawable.Drawable
@@ -10,8 +10,8 @@ import android.view.LayoutInflater
 import android.widget.RelativeLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
-import org.openziti.mobile.databinding.IdentityitemBinding
-import org.openziti.mobile.model.Identity
+import org.hanzozt.mobile.databinding.IdentityitemBinding
+import org.hanzozt.mobile.model.Identity
 
 /**
  * TODO: document your custom view class.

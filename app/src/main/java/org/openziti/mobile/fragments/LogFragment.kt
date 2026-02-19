@@ -2,7 +2,7 @@
  * Copyright (c) 2025 NetFoundry. All rights reserved.
  */
 
-package org.openziti.mobile.fragments
+package org.hanzozt.mobile.fragments
 
 import android.content.ClipData
 import android.content.ClipboardManager
@@ -19,8 +19,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.transition.TransitionInflater
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import org.openziti.mobile.R
-import org.openziti.mobile.databinding.LogBinding
+import org.hanzozt.mobile.R
+import org.hanzozt.mobile.databinding.LogBinding
 import timber.log.Timber
 
 /**

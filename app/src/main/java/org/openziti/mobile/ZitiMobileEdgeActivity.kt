@@ -2,7 +2,7 @@
  * Copyright (c) 2021 NetFoundry. All rights reserved.
  */
 
-package org.openziti.mobile
+package org.hanzozt.mobile
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
@@ -31,12 +31,12 @@ import androidx.core.os.ConfigurationCompat
 import androidx.core.os.bundleOf
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
-import org.openziti.mobile.databinding.DashboardBinding
-import org.openziti.mobile.debug.DebugInfo
-import org.openziti.mobile.fragments.AboutFragment
-import org.openziti.mobile.fragments.AdvancedFragment
-import org.openziti.mobile.fragments.IdentityDetailFragment
-import org.openziti.mobile.model.TunnelModel
+import org.hanzozt.mobile.databinding.DashboardBinding
+import org.hanzozt.mobile.debug.DebugInfo
+import org.hanzozt.mobile.fragments.AboutFragment
+import org.hanzozt.mobile.fragments.AdvancedFragment
+import org.hanzozt.mobile.fragments.IdentityDetailFragment
+import org.hanzozt.mobile.model.TunnelModel
 import java.util.Timer
 import java.util.TimerTask
 

@@ -81,7 +81,7 @@
         </activity>
 
         <provider
-            android:name="org.openziti.mobile.debug.FeedbackProvider"
+            android:name="org.hanzozt.mobile.debug.FeedbackProvider"
             android:authorities="${applicationId}.provider"
             android:exported="false"
             android:grantUriPermissions="true">

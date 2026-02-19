@@ -2,7 +2,7 @@
  * Copyright (c) 2024 NetFoundry. All rights reserved.
  */
 
-package org.openziti.tunnel
+package org.hanzozt.tunnel
 
 import android.util.Base64
 import java.net.Inet4Address

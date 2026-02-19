@@ -2,7 +2,7 @@
  * Copyright (c) 2025 NetFoundry. All rights reserved.
  */
 
-package org.openziti.tunnel
+package org.hanzozt.tunnel
 
 import android.security.keystore.KeyGenParameterSpec
 import android.security.keystore.KeyProperties
