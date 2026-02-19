@@ -108,7 +108,7 @@ class Keychain(val store: KeyStore) {
             store.setKeyEntry(alias, entry.privateKey, null, certificates)
 
             for (c in caBundle) {
-                store.setCertificateEntry("ziti:$id/${c.subjectDN}", c)
+                store.setCertificateEntry("zt:$id/${c.subjectDN}", c)
             }
         }
     }

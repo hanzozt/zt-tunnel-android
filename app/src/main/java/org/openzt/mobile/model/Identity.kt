@@ -50,7 +50,7 @@ class Identity(
     data object Authenticated: AuthState("Authenticated")
     data class AuthJWT(val providers: List<JwtSigner>): AuthState("Login with JWT")
 
-    val zitiID: String =
+    val ztID: String =
         with(URI(id)){
             userInfo ?: path?.removePrefix("/")
         } ?: id
@@ -184,7 +184,7 @@ class Identity(
                     status.postValue(ev.status)
                 }
 
-                if (ev.status == "ziti context is disabled") {
+                if (ev.status == "zt context is disabled") {
                     authState.value = AuthNone
                     routers.clear()
                     rtData.postValue(routers)

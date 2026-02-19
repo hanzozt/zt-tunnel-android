@@ -73,18 +73,18 @@ if (tunnel_DIR)
 else (tunnel_DIR)
     include(FetchContent)
     FetchContent_Declare(tun-sdk
-            GIT_REPOSITORY http://github.com/hanzozt/ziti-tunnel-sdk-c.git
+            GIT_REPOSITORY http://github.com/hanzozt/zt-tunnel-sdk-c.git
             GIT_TAG ${tunnel_sdk_VERSION}
     )
     FetchContent_MakeAvailable(tun-sdk)
 endif ()
 
 target_include_directories(${CMAKE_PROJECT_NAME}
-        PRIVATE ${ziti-sdk_SOURCE_DIR}/inc_internal
+        PRIVATE ${zt-sdk_SOURCE_DIR}/inc_internal
 )
 
 
 target_link_libraries(${CMAKE_PROJECT_NAME}
-        ziti-tunnel-sdk-c
-        ziti-tunnel-cbs-c
+        zt-tunnel-sdk-c
+        zt-tunnel-cbs-c
 )

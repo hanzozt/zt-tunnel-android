@@ -6,7 +6,7 @@ on:
       nightly:
         type: choice
         default: 'false'
-        description: use latest tunnel and ziti SDKs
+        description: use latest tunnel and zt SDKs
         options: [ 'true', 'false' ]
 
   push:
@@ -49,10 +49,10 @@ jobs:
 
     - uses: actions/upload-artifact@v6
       with:
-        name: ziti-mobile-edge-${{ env.BUILD_TYPE }}.aab
+        name: zt-mobile-edge-${{ env.BUILD_TYPE }}.aab
         path: app/build/outputs/bundle/*/*.aab
 
     - uses: actions/upload-artifact@v6
       with:
-        name: ziti-mobile-edge-${{ env.BUILD_TYPE }}.apk
+        name: zt-mobile-edge-${{ env.BUILD_TYPE }}.apk
         path: app/build/outputs/apk/*/*.apk

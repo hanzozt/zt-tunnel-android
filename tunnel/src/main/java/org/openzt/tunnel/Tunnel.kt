@@ -117,9 +117,9 @@ class Tunnel(app: Application, ): Runnable {
         @JvmStatic
         external fun tlsuvVersion(): String
         @JvmStatic
-        external fun zitiSdkVersion(): String
+        external fun ztSdkVersion(): String
         @JvmStatic
-        external fun zitiTunnelVersion(): String
+        external fun ztTunnelVersion(): String
 
     }
 

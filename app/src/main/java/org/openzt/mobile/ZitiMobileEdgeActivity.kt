@@ -283,7 +283,7 @@ class ZitiMobileEdgeActivity : AppCompatActivity() {
         }
 
 
-        prefs = getSharedPreferences("ziti-vpn", Context.MODE_PRIVATE)
+        prefs = getSharedPreferences("zt-vpn", Context.MODE_PRIVATE)
     }
 
     override fun onPause() {

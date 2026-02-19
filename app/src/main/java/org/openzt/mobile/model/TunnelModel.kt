@@ -60,10 +60,10 @@ class TunnelModel(
     val Context.prefs: DataStore<Preferences> by preferencesDataStore("tunnel")
     val identitiesDir: File = context().getDir("identities", Context.MODE_PRIVATE)
 
-    val zitiDNS = context().prefs.data.map {
+    val ztDNS = context().prefs.data.map {
         it[NAMESERVER] ?: "100.64.0.2"
     }
-    val zitiRange = context().prefs.data.map {
+    val ztRange = context().prefs.data.map {
         it[RANGE] ?: "100.64.0.0/10"
     }
 
@@ -90,8 +90,8 @@ class TunnelModel(
 
     init {
         runBlocking {
-            val dns = zitiDNS.first()
-            val range = zitiRange.first()
+            val dns = ztDNS.first()
+            val range = ztRange.first()
             Log.i("setting dns[$dns] and range[$range]")
             tunnel.setupDNS(dns, range)
             tunnel.start()
@@ -139,7 +139,7 @@ class TunnelModel(
 
     private fun loadConfigFromKeyStore(alias: String): ZitiConfig? {
         if (!Keychain.store.containsAlias(alias)) return null
-        if (!alias.startsWith("ziti://")) return null
+        if (!alias.startsWith("zt://")) return null
 
         val entry = Keychain.store.getEntry(alias, null)
         if (entry !is PrivateKeyEntry) return null
@@ -151,7 +151,7 @@ class TunnelModel(
         val idCerts = Keychain.store.getCertificateChain(alias)
         val pem = idCerts.map { it as X509Certificate }
             .joinToString(transform = X509Certificate::toPEM, separator = "")
-        val caCerts = Keychain.store.aliases().toList().filter { it.startsWith("ziti:$id/") }
+        val caCerts = Keychain.store.aliases().toList().filter { it.startsWith("zt:$id/") }
             .map { Keychain.store.getCertificate(it) as X509Certificate}
             .joinToString(transform = X509Certificate::toPEM, separator = "")
 
@@ -270,7 +270,7 @@ class TunnelModel(
                 Log.w(it, "failed to remove config")
             }
 
-            val caCerts = Keychain.store.aliases().toList().filter { it.startsWith("ziti:$id/") }
+            val caCerts = Keychain.store.aliases().toList().filter { it.startsWith("zt:$id/") }
             caCerts.forEach {
                 Keychain.store.runCatching {
                     deleteEntry(it)

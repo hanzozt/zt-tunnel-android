@@ -24,14 +24,14 @@ private fun Any.resolve(): String  {
 }
 // use local checkouts or custom version if desired
 // set in local.properties
-// ziti.dir = /home/ziggy/work/ziti-sdk-c
+// zt.dir = /home/ziggy/work/zt-sdk-c
 // XXX.dir takes precedence over XXX.version
 overrides["tunnel.dir"]?.resolve()?.let { cmakeArgs.add("-Dtunnel_DIR=$it") }
-overrides.getOrElse("tunnel.version"){ libs.versions.ziti.tunnel.sdk.get() }.let {
+overrides.getOrElse("tunnel.version"){ libs.versions.zt.tunnel.sdk.get() }.let {
     cmakeArgs.add("-Dtunnel_sdk_VERSION=$it")
 }
-overrides["ziti.dir"]?.resolve()?.let { cmakeArgs.add("-DZITI_SDK_DIR=$it") }
-overrides["ziti.version"]?.let{ cmakeArgs.add("-DZITI_SDK_VERSION=$it") }
+overrides["zt.dir"]?.resolve()?.let { cmakeArgs.add("-DZITI_SDK_DIR=$it") }
+overrides["zt.version"]?.let{ cmakeArgs.add("-DZITI_SDK_VERSION=$it") }
 overrides["tlsuv.dir"]?.resolve()?.let { cmakeArgs.add("-Dtlsuv_DIR=$it") }
 
 val sanitizer = overrides["sanitize"]

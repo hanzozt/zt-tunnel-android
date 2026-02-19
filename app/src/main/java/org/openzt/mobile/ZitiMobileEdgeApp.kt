@@ -29,8 +29,8 @@ class ZitiMobileEdgeApp: Application() {
         Log.plant(Log.DebugTree(), NativeLog)
 
         Log.i("native[tlsuv]: ${Tunnel.tlsuvVersion()}")
-        Log.i("native[ziti]: ${Tunnel.zitiSdkVersion()}")
-        Log.i("native[ziti-tunnel]: ${Tunnel.zitiTunnelVersion()}")
+        Log.i("native[zt]: ${Tunnel.ztSdkVersion()}")
+        Log.i("native[zt-tunnel]: ${Tunnel.ztTunnelVersion()}")
 
         model = TunnelModel(tunnel) { this }
 

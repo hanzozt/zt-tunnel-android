@@ -12,8 +12,8 @@ To create a custom build and release of ZME you need to do the following:
    | `resourceDir` | (optional) location of resource overrides |
 
 3. the build script will configure appropriate tasks and outputs:
-   for example, if `org = myorg`, then `:ziti-mobile-edge:bundleDebug` tasks will create the white labeled bundle in
-   `app/build/outputs/bundle/myorgDebug/ziti-mobile-edge-myorg-debug.aab`
+   for example, if `org = myorg`, then `:zt-mobile-edge:bundleDebug` tasks will create the white labeled bundle in
+   `app/build/outputs/bundle/myorgDebug/zt-mobile-edge-myorg-debug.aab`
 4. white-labeled release artifacts need to be signed. the signing is configured via environment variables:
    - `RELEASE_KEYSTORE` - keystore file containing the signing key
    - `RELEASE_KEYSTORE_PASSWORD` - keystore password

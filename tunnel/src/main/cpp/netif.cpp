@@ -5,9 +5,9 @@
 
 #include <jni.h>
 
-#include <ziti/ziti_tunnel.h>
-#include <ziti/ziti_log.h>
-#include <ziti/enums.h>
+#include <zt/zt_tunnel.h>
+#include <zt/zt_log.h>
+#include <zt/enums.h>
 #include "metrics.h"
 
 #include "netif.h"

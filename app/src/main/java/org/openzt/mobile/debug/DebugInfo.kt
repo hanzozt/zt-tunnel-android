@@ -42,8 +42,8 @@ sealed class DebugInfo(val wrap: Boolean = false) {
             appendLine("Device:          ${Build.MODEL} (${Build.MANUFACTURER})")
             appendLine("Android Version: ${Build.VERSION.RELEASE}")
             appendLine("Android-SDK:     ${Build.VERSION.SDK_INT}")
-            appendLine("Ziti Tunnel SDK: ${Tunnel.zitiTunnelVersion()}")
-            appendLine("Ziti SDK:        ${Tunnel.zitiSdkVersion()}")
+            appendLine("Ziti Tunnel SDK: ${Tunnel.ztTunnelVersion()}")
+            appendLine("Ziti SDK:        ${Tunnel.ztSdkVersion()}")
         }
     }
 
@@ -68,7 +68,7 @@ sealed class DebugInfo(val wrap: Boolean = false) {
 
         override fun dump(name: String, output: Writer) = output.apply {
             val keyStore = Keychain.store
-            val ids = keyStore.aliases().toList().filter { it.startsWith("ziti://") }
+            val ids = keyStore.aliases().toList().filter { it.startsWith("zt://") }
             for (id in ids) {
                 appendLine("==== $id ===")
                 val entry = keyStore.getEntry(id, null)
@@ -78,7 +78,7 @@ sealed class DebugInfo(val wrap: Boolean = false) {
                 }
 
                 val uri = URI(id)
-                val zitiId = uri.userInfo ?: uri.path.removePrefix("/")
+                val ztId = uri.userInfo ?: uri.path.removePrefix("/")
                 entry.certificateChain.mapIndexed { idx, c ->
                     if (c is X509Certificate) {
                         appendLine("""
@@ -93,7 +93,7 @@ sealed class DebugInfo(val wrap: Boolean = false) {
                 }
 
                 appendLine("CA Bundle ========")
-                val caAliases = keyStore.aliases().toList().filter { it.startsWith("ziti:$zitiId/") }
+                val caAliases = keyStore.aliases().toList().filter { it.startsWith("zt:$ztId/") }
                 val caCerts = caAliases.map {
                     keyStore.getEntry(it, null)
                 }.filterIsInstance<TrustedCertificateEntry>().map { it.trustedCertificate }
@@ -153,11 +153,11 @@ sealed class DebugInfo(val wrap: Boolean = false) {
     data object ZitiDumpInfo: DebugInfo(wrap = true) {
         override val names: Iterable<String>
             get() =
-                zme.model.identities().value?.map{it.zitiID} ?: emptyList()
+                zme.model.identities().value?.map{it.ztID} ?: emptyList()
 
         override fun dump(name: String, output: Writer) = output.apply {
             runCatching {
-                val ztx = zme.model.identities().value?.first { it.zitiID == name }
+                val ztx = zme.model.identities().value?.first { it.ztID == name }
                 ztx?.let {
                     zme.model.dumpIdentity(it.id).get()
                 } ?: "not found"
@@ -193,7 +193,7 @@ sealed class DebugInfo(val wrap: Boolean = false) {
                 "no enrollments"
             } else {
                 identities.joinToString(separator = "\n") {
-                    "\t${it.name.value ?: it.zitiID} - ${it.status.value}"
+                    "\t${it.name.value ?: it.ztID} - ${it.status.value}"
                 }
             }
 

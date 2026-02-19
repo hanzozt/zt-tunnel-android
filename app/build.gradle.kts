@@ -66,7 +66,7 @@ android {
     namespace = "org.hanzozt.mobile"
     signingConfigs {
         create("release") {
-            keyAlias = (System.getenv("RELEASE_KEY_ALIAS") ?: "ziti1")
+            keyAlias = (System.getenv("RELEASE_KEY_ALIAS") ?: "zt1")
             keyPassword = System.getenv("RELEASE_KEY_PASSWORD") ?: System.getenv("RELEASE_KEYSTORE_PASSWORD")
             storeFile = file(System.getenv("RELEASE_KEYSTORE") ?: "not found")
             storePassword = System.getenv("RELEASE_KEYSTORE_PASSWORD")

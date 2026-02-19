@@ -56,8 +56,8 @@ class AboutFragment : BaseFragment() {
         b.Version.setOnLongClickListener {
             val text =
                 """Version:         ${BuildConfig.VERSION_NAME}(${BuildConfig.GIT_COMMIT})
-                  |ziti-tunnel-sdk: ${Tunnel.zitiTunnelVersion()}
-                  |ziti-sdk:        ${Tunnel.zitiSdkVersion()}
+                  |zt-tunnel-sdk: ${Tunnel.ztTunnelVersion()}
+                  |zt-sdk:        ${Tunnel.ztSdkVersion()}
                   |tlsuv:           ${Tunnel.tlsuvVersion()}
             """.trimMargin()
             clipBoard.setPrimaryClip(

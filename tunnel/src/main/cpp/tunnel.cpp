@@ -9,11 +9,11 @@
 #include <tlsuv/keychain.h>
 #include <tlsuv/tlsuv.h>
 #include <tlsuv/tls_engine.h>
-#include <ziti/ziti.h>
-#include <ziti/ziti_dns.h>
-#include <ziti/ziti_log.h>
-#include <ziti/ziti_tunnel.h>
-#include <ziti/ziti_tunnel_cbs.h>
+#include <zt/zt.h>
+#include <zt/zt_dns.h>
+#include <zt/zt_log.h>
+#include <zt/zt_tunnel.h>
+#include <zt/zt_tunnel_cbs.h>
 
 #include "netif.h"
 
@@ -29,8 +29,8 @@ static void JNICALL setup_ipc(JNIEnv *, jobject, jint, jint);
 static void JNICALL run_tunnel(JNIEnv *env, jobject);
 static void JNICALL execute_cmd(JNIEnv *, jobject, jstring, jstring, jobject);
 static jstring JNICALL tlsuvVersion(JNIEnv *env, jclass /* this */);
-static jstring JNICALL zitiSdkVersion(JNIEnv *env, jclass );
-static jstring JNICALL zitiTunnelVersion(JNIEnv *env, jclass );
+static jstring JNICALL ztSdkVersion(JNIEnv *env, jclass );
+static jstring JNICALL ztTunnelVersion(JNIEnv *env, jclass );
 static void notify_cb(uv_async_t *async);
 static void on_event(const base_event *);
 
@@ -51,7 +51,7 @@ static uv_mutex_t cmd_queue_lock;
 static uv_loop_t *loop;
 static uv_async_t notify;
 static tunneler_context tun_ctx;
-static const ziti_tunnel_ctrl *CTRL;
+static const zt_tunnel_ctrl *CTRL;
 static uv_pipe_t cmd_pipe;
 static uv_pipe_t event_pipe;
 
@@ -85,8 +85,8 @@ JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void* reserved) {
             {"setDNSrange",       "(Ljava/lang/String;Ljava/lang/String;)V",                   (void *) set_dns},
             {"run",               "()V",                                                       (void *) run_tunnel},
             {"tlsuvVersion",      "()Ljava/lang/String;",                                      (void *) (tlsuvVersion)},
-            {"zitiSdkVersion",    "()Ljava/lang/String;",                                      (void *) (zitiSdkVersion)},
-            {"zitiTunnelVersion", "()Ljava/lang/String;",                                      (void *) (zitiTunnelVersion)},
+            {"ztSdkVersion",    "()Ljava/lang/String;",                                      (void *) (ztSdkVersion)},
+            {"ztTunnelVersion", "()Ljava/lang/String;",                                      (void *) (ztTunnelVersion)},
             {"executeCommand",    "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;)V", (void *) execute_cmd},
             {"initNative",        "(Ljava/lang/String;Ljava/lang/String;)V",                   (void *) init_tunnel},
             {"setupIPC",          "(II)V",                                                     (void *) setup_ipc},
@@ -109,7 +109,7 @@ JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void* reserved) {
 static void JNICALL set_dns(JNIEnv *env, jobject, jstring dns, jstring range) {
     auto dnsstr = env->GetStringUTFChars(dns, nullptr);
     auto rangestr = env->GetStringUTFChars(range, nullptr);
-    ziti_dns_setup(tun_ctx, dnsstr, rangestr);
+    zt_dns_setup(tun_ctx, dnsstr, rangestr);
     env->ReleaseStringUTFChars(dns, dnsstr);
     env->ReleaseStringUTFChars(range, rangestr);
 }
@@ -117,7 +117,7 @@ static void JNICALL set_dns(JNIEnv *env, jobject, jstring dns, jstring range) {
 void init_tunnel(JNIEnv *env, jobject self, jstring app, jstring ver) {
     auto app_name = env->GetStringUTFChars(app, nullptr);
     auto app_ver = env->GetStringUTFChars(ver, nullptr);
-    ziti_set_app_info(app_name, app_ver);
+    zt_set_app_info(app_name, app_ver);
     env->ReleaseStringUTFChars(app, app_name);
     env->ReleaseStringUTFChars(ver, app_ver);
 
@@ -126,24 +126,24 @@ void init_tunnel(JNIEnv *env, jobject self, jstring app, jstring ver) {
     
     tunnelMethods.tunnel = env->NewGlobalRef(self);
     loop = uv_loop_new();
-    ziti_log_init(loop, DEBUG, android_logger);
-    ziti_tunnel_set_logger(ziti_logger);
-    ziti_set_refresh_interval(300);
+    zt_log_init(loop, DEBUG, android_logger);
+    zt_tunnel_set_logger(zt_logger);
+    zt_set_refresh_interval(300);
     uv_async_init(loop, &notify, notify_cb);
     uv_pipe_init(loop, &cmd_pipe, 0);
     uv_pipe_init(loop, &event_pipe, 0);
 
     tunneler_sdk_options tunneler_opts = {
             .netif_driver = android_netif_driver(),
-            .ziti_dial = ziti_sdk_c_dial,
-            .ziti_close = ziti_sdk_c_close,
-            .ziti_close_write = ziti_sdk_c_close_write,
-            .ziti_write = ziti_sdk_c_write,
-            .ziti_host = ziti_sdk_c_host
+            .zt_dial = zt_sdk_c_dial,
+            .zt_close = zt_sdk_c_close,
+            .zt_close_write = zt_sdk_c_close_write,
+            .zt_write = zt_sdk_c_write,
+            .zt_host = zt_sdk_c_host
     };
 
-    tun_ctx = ziti_tunneler_init(&tunneler_opts, loop);
-    CTRL = ziti_tunnel_init_cmd(loop, tun_ctx, on_event);
+    tun_ctx = zt_tunneler_init(&tunneler_opts, loop);
+    CTRL = zt_tunnel_init_cmd(loop, tun_ctx, on_event);
 }
 
 static void JNICALL setup_ipc(JNIEnv *, jobject, jint cmd_fd, jint event_fd) {
@@ -156,12 +156,12 @@ jstring JNICALL tlsuvVersion(JNIEnv *env, jclass) {
     return env->NewStringUTF(tlsuv_version());
 }
 
-jstring JNICALL zitiSdkVersion(JNIEnv *env, jclass) {
-    return env->NewStringUTF(ziti_get_version()->version);
+jstring JNICALL ztSdkVersion(JNIEnv *env, jclass) {
+    return env->NewStringUTF(zt_get_version()->version);
 }
 
-jstring JNICALL zitiTunnelVersion(JNIEnv *env, jclass) {
-    return env->NewStringUTF(ziti_tunneler_version());
+jstring JNICALL ztTunnelVersion(JNIEnv *env, jclass) {
+    return env->NewStringUTF(zt_tunneler_version());
 }
 
 static void cmd_write_cb(uv_write_t *req, int i) {
@@ -262,8 +262,8 @@ static void on_event(const base_event *ev) {
     char *json = nullptr;
     switch (ev->event_type) {
         case TunnelEvent_ContextEvent:
-            json = ziti_ctx_event_to_json(
-                    (const ziti_ctx_event*)ev, MODEL_JSON_COMPACT, nullptr);
+            json = zt_ctx_event_to_json(
+                    (const zt_ctx_event*)ev, MODEL_JSON_COMPACT, nullptr);
             break;
         case TunnelEvent_ServiceEvent:
             json = service_event_to_json(

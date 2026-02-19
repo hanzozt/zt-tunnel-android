@@ -175,7 +175,7 @@ class IdentityDetailFragment : BaseFragment() {
         Timber.i("external auth completed: result[${result.resultCode}]")
         val message = when (result.resultCode) {
             AuthTabIntent.RESULT_OK -> "Authentication completed"
-            // ziti auth page closes on success
+            // zt auth page closes on success
             AuthTabIntent.RESULT_CANCELED -> "Authentication completed"
             AuthTabIntent.RESULT_VERIFICATION_FAILED -> "Verification failed"
             AuthTabIntent.RESULT_VERIFICATION_TIMED_OUT -> "Verification timed out"
@@ -188,7 +188,7 @@ class IdentityDetailFragment : BaseFragment() {
     private fun startJwtAuth(identity: Identity, provider: String?) {
         identity.useJWTSigner(provider).thenApply {
             AuthTabIntent.Builder().build().apply {
-                launch(launcher, it.url.toUri(), "ziti+auth")
+                launch(launcher, it.url.toUri(), "zt+auth")
             }
         }
     }

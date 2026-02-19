@@ -262,10 +262,10 @@ class ZitiVPNService : VpnService(), CoroutineScope {
                 setMetered(metered)
             }
 
-            val range = runBlocking { model.zitiRange.first().toRoute() }
+            val range = runBlocking { model.ztRange.first().toRoute() }
             val size = if (range.address is Inet6Address) 128 else 32
             addAddress(range.address, size)
-            addDnsServer(runBlocking { model.zitiDNS.first() })
+            addDnsServer(runBlocking { model.ztDNS.first() })
 
             routes.forEach { route ->
                 Log.d("adding route $route")

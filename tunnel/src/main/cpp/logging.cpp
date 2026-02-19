@@ -10,7 +10,7 @@
 #include <jni.h>
 #include <uv.h>
 
-#include <ziti/ziti_log.h>
+#include <zt/zt_log.h>
 
 #define LOG_FMT(msg_fmt) "[%9" PRIu64 ".%03" PRIu64 "] %c %.30s: " msg_fmt "\n"
 
@@ -82,7 +82,7 @@ static void createLogFile() {
 
     time(&now);
     gmtime_r(&now, &t);
-    snprintf(path, sizeof(path), "%s/ziti-%4d%02d%02d-%02d%02d.log",
+    snprintf(path, sizeof(path), "%s/zt-%4d%02d%02d-%02d%02d.log",
              log_dir, t.tm_year + 1900, t.tm_mon + 1, t.tm_mday, t.tm_hour, t.tm_min);
 
     FILE *lf = fopen(path, "a");
@@ -145,7 +145,7 @@ Java_org_hanzozt_log_NativeLog_logNative(JNIEnv *env, jclass clazz,
                 break;
         }
         const char *t = env->GetStringUTFChars(tag, nullptr);
-        if (priority < ziti_log_level("app", t)) {
+        if (priority < zt_log_level("app", t)) {
             const char *m = env->GetStringUTFChars(msg, nullptr);
 
             char l = levels[priority];
